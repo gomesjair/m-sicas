@@ -4,7 +4,7 @@
     <title>Music Website </title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="fundo">
     <div class="container">
         <div class="navbar">
             <img src="https://logosmarcas.net/wp-content/uploads/2020/11/Razer-Logo.png" class="logo">
@@ -31,6 +31,10 @@
                 <strong id="atual">
                 00:00
                 </strong>
+                <div id="volume-container">
+                    <input step="3" type="range" name="" id="volume">
+                <img src="https://img.icons8.com/nolan/2x/portable-speaker2.png" alt="">
+                </div>
             </div>  
             
     </div>
@@ -48,6 +52,22 @@
     var total_atual = document.querySelector("#atual")
     var tocando = false
     var atual = 0
+    var fundo = document.querySelector(".container")
+    var volume = document.querySelector("#volume")
+    volume.addEventListener("change",function(){
+       
+        let vol=volume.value
+        if(vol<50){
+            musica.volume=0.5
+        }
+         if(vol==100){
+            musica.volume=1.0
+        }
+         if(vol==0){
+            musica.volume=0.0
+            console.log(volume.value);
+        }
+    })
     var playlist = [
         {
             titulo:"MC Hariel - Maçã Verde (GR6 Explode) Caio Passos",
@@ -525,10 +545,12 @@
             tocando = false
             play.src = "https://img.icons8.com/nolan/2x/play.png"           
             musica.pause()  
+            fundo.style.backgroundImage = "url('https://i.ytimg.com/vi/RMqaBAg6bc0/maxresdefault.jpg')"
         }else{ 
             tocando = true
             play.src = "https://img.icons8.com/nolan/2x/pause.png" 
             musica.play()
+            fundo.style.backgroundImage = "url('https://i.pinimg.com/originals/0a/54/ef/0a54ef17f9414b707278320da87680ea.gif')";
            
         }
         
